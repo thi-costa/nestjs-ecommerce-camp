@@ -20,7 +20,8 @@
     "paths": {
       "@config/*": ["src/config/*"],
       "@app/*": ["src/app/*"],
-      "@shared/*": ["src/shared/*"]
+      "@shared/*": ["src/shared/*"],
+      "@auth/*": ["src/auth/*"]
     }
   }
 }

@@ -1,3 +1,4 @@
+import { User } from '@app/users/user.entity';
 import { InternalServerErrorException, Logger } from '@nestjs/common';
 import { EntityRepository, Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-products.dto';
@@ -46,7 +47,7 @@ export class ProductRepository extends Repository<Product> {
     }
   }
 
-  async createProduct(createProductDto: CreateProductDto): Promise<Product> {
+  async createProduct(createProductDto: CreateProductDto, user: User): Promise<Product> {
     const { name, size, category, qty, price } = createProductDto;
 
     const product = this.create({
@@ -55,9 +56,10 @@ export class ProductRepository extends Repository<Product> {
       category,
       qty,
       price,
+      user,
     });
     this.logger.verbose(
-      `Product: ${name} was created. Details: ${JSON.stringify(product)}`,
+      `User: ${user.username}, created the Product ${product.name}, with ${product.qty} units and $ ${product.price} cost`,
     );
     await this.save(product);
     return product;

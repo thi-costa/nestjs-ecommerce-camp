@@ -1,8 +1,6 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ConfigValidationSchema } from '@config/env/config.schema';
-import { config } from '@config/config';
 import { TransformInterceptor } from './transform.interceptor';
 
 async function bootstrap() {
@@ -12,9 +10,7 @@ async function bootstrap() {
 
   logger.log(process.env.PORT);
   // logger.log(`Stage: ${JSON.stringify(process.env)}`);
-  logger.log(`Stage: ${JSON.stringify(process.env.STAGE)}`);
   logger.log(process.env.DB_USERNAME);
-  
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useGlobalInterceptors(new TransformInterceptor());

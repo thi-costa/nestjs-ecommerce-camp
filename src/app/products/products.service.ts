@@ -1,3 +1,4 @@
+import { User } from '@app/users/user.entity';
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateProductDto } from './dto/create-products.dto';
@@ -19,8 +20,11 @@ export class ProductsService {
     return this.productsRepository.getProducts(filterDto);
   }
 
-  createProduct(createProductDto: CreateProductDto): Promise<Product> {
+  createProduct(
+    createProductDto: CreateProductDto,
+    user: User,
+  ): Promise<Product> {
     this.logger.debug('CreateProduct called');
-    return this.productsRepository.createProduct(createProductDto);
+    return this.productsRepository.createProduct(createProductDto, user);
   }
 }

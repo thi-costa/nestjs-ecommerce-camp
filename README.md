@@ -22,18 +22,68 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+Tabela de conteúdos
+=================
+<p align="center">
+ <a href="#descricao">Descrição</a> •
+ <a href="#instalacao">Instalação</a> • 
+ <a href="#execucao">Execução</a> • 
+ <a href="#support">Support</a> • 
+ <a href="#autor">Autor</a> • 
+ <a href="#referencias">Referências</a> • 
+ <a href="#license">License</a>
+</p>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Descrição
 
-## Installation
+Api de ecommerce de moda, realizado no 4°camp da ioays, na trilha back-end.
+
+Fora definidos alguns requisitos para execução do projeto:
+1. API deve atender às seguintes entidades: Admin, Usuário, Produto e Pedido 
+2. Utilizar NestJS
+3. Detalhamento no readme do que é necessário para execução
+4. Diagrama de banco de dados deve ser entregue (está na pasta "db-diagram")
+
+E, o projeto deve cumprir as seguintes regras do negócio:
+1. Um usuário poderá criar uma conta,
+autenticar-se, atualizar suas informações
+e até deletar seu próprio perfil
+2. O usuário poderá ter mais de um pedido
+e apenas o dono do pedido poderá ter
+acesso a ele.
+3. Apenas um administrador poderá
+cadastrar produtos e assim definir quanto
+deste produto está disponível no estoque.
+4. Cada produto precisa ter pelo menos um
+tamanho
+5. Um e-commerce precisa gerenciar um
+estoque dos produtos
+6. Um pedido poderá ser realizado apenas por
+usuários autenticados.
+
+## Instalação
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Execução
+Para execução do app você precisa definir as variáveis do ambiente no arquivo 'env.stage.dev' (em desenvolvimento) e/ou o 'env.stage.prod' (produção). Segue as variáveis definidas como padrão no postgres.
+```bash
+PORT=3000
+JWT_SECRET=pM>]zzX7&(,?kw8?DDc;pXSRq^S(=d)^r=~#XUY/7@5{/"@G6{7Q*9}a8k>wj^Na
+EXPIRES_IN=3600
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+DB_DATABASE=fashion-ecommerce
+```
 
+
+Antes de executar os comandos abaixo, você precisa criar um banco de dados postgres com a ferramenta pgAdmin, de modo que as informações definidas nas variáveis de ambiente sejam iguais entre o banco de dados e variável de ambiente escolhidas sejam iguais. Como deixei ativo a opção "autoLoadEntities" no módulo do TypeORM, as migrations são feitas automaticamente para as entities do projeto.
+
+Indico rodar o comando `$ npm run start:dev`, pois já estão com as variáveis de ambiente definidas
 ```bash
 # development
 $ npm run start
@@ -45,28 +95,19 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
 
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+## Autor
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Autor - [Thiago Costa](https://github.com/thi-costa)
+- Email - [📧](mailto:thiago14abr@gmail.com?cc=&bcc=&subject=Ol%C3%A1%20Thiago!&body=)
+
+## Referências
+- NestJS - https://docs.nestjs.com/
+- NodeJS - https://nodejs.org/api/
 
 ## License
 

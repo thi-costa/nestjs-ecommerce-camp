@@ -3,12 +3,15 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { ProductSize } from '@app/products/products-size.enum';
-import { ProductCategory } from './products-category.enum';
-import { IsIn, IsInt, IsNumber } from 'class-validator';
+import { ProductCategory } from '@app/products/products-category.enum';
+import { IsInt, IsNumber } from 'class-validator';
+import { User } from '@app/users/user.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class Product {
@@ -39,4 +42,8 @@ export class Product {
 
   @DeleteDateColumn({ name: 'deleted_at' })
   public deletedAt: Date;
+
+  @ManyToOne((_type) => User, (user) => user.products, { eager: false })
+  @Exclude({ toPlainOnly: true })
+  user: User;
 }
