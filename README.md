@@ -25,12 +25,12 @@
 Tabela de conteúdos
 =================
 <p align="center">
- <a href="#descricao">Descrição</a> •
- <a href="#instalacao">Instalação</a> • 
- <a href="#execucao">Execução</a> • 
+ <a href="#descrição">Descrição</a> •
+ <a href="#instalação">Instalação</a> • 
+ <a href="#execução">Execução</a> • 
  <a href="#support">Support</a> • 
  <a href="#autor">Autor</a> • 
- <a href="#referencias">Referências</a> • 
+ <a href="#referências">Referências</a> • 
  <a href="#license">License</a>
 </p>
 
@@ -41,8 +41,9 @@ Api de ecommerce de moda, realizado no 4°camp da ioays, na trilha back-end.
 Fora definidos alguns requisitos para execução do projeto:
 1. API deve atender às seguintes entidades: Admin, Usuário, Produto e Pedido 
 2. Utilizar NestJS
-3. Detalhamento no readme do que é necessário para execução
-4. Diagrama de banco de dados deve ser entregue (está na pasta "db-diagram")
+3. Documente seus endpoints (a collections do postman utilizada está na pasta "./postman-requests")
+4. Detalhamento no readme do que é necessário para execução
+5. Diagrama de banco de dados deve ser entregue (está na pasta "db-diagram")
 
 E, o projeto deve cumprir as seguintes regras do negócio:
 1. Um usuário poderá criar uma conta,
