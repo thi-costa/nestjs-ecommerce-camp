@@ -1,11 +1,18 @@
 import { UsersRepository } from '@app/users/users.repository';
-import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuthCredentialsDto } from '@auth/dto/auth-credentials.dto';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from '@auth/jwt-payload.interface';
 import { Role } from './roles/role.enum';
+import { UpdateUserDto } from '@app/users/dto/update-user.dto';
+import { User } from '@shared/entities/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -51,5 +58,32 @@ export class AuthService {
 
       throw new UnauthorizedException('Please check your login credentials');
     }
+  }
+
+  async getUserById(id: string): Promise<User> {
+    const found = await this.usersRepository.findOne({ where: { id } });
+
+    if (!found) {
+      throw new NotFoundException(`User with ID ${id} Not Found`);
+    }
+
+    return found;
+  }
+
+  async updateUser(id, updateUserDto: UpdateUserDto) {
+    const user = await this.getUserById(id);
+    this.logger.verbose(`Object of updating ${JSON.stringify(updateUserDto)}`);
+
+    this.logger.debug(`User ${user.username} was updated`);
+
+    return this.usersRepository.save({ id: user.id, ...updateUserDto });
+  }
+
+  async deleteUser(id: string): Promise<void> {
+    const result = await this.usersRepository.delete({ id });
+    if (result.affected === 0) {
+      throw new NotFoundException(`User with ID ${id} Not Found`);
+    }
+    this.logger.debug(`User with id ${id} deleted`);
   }
 }
