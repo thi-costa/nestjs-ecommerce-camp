@@ -26,6 +26,7 @@ Tabela de conteúdos
 =================
 <p align="center">
  <a href="#descrição">Descrição</a> •
+ <a href="#bd">BD</a> •
  <a href="#instalação">Instalação</a> • 
  <a href="#execução">Execução</a> • 
  <a href="#support">Support</a> • 
@@ -61,6 +62,12 @@ tamanho -> cumprido
 estoque dos produtos -> acrescentei a possibilidade
 6. Um pedido poderá ser realizado apenas por
 usuários autenticados.
+
+## BD
+Utilizou-se o banco de dados dos postgres nesse projeto.
+Segue abaixo imagem do diagrama do banco de dados idealizado.
+
+![img](/db-diagram/diagram.png)
 
 ## Instalação
 
