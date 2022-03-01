@@ -1,11 +1,11 @@
-import { User } from '@app/users/user.entity';
+import { User } from '@shared/entities/user.entity';
 import { InternalServerErrorException, Logger } from '@nestjs/common';
 import { EntityRepository, Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-products.dto';
 import { GetProductsFilterDto } from './dto/get-products-filter.dto';
 import { ProductCategory } from './products-category.enum';
 import { ProductSize } from './products-size.enum';
-import { Product } from './products.entity';
+import { Product } from '../../shared/entities/products.entity';
 
 @EntityRepository(Product)
 export class ProductRepository extends Repository<Product> {
