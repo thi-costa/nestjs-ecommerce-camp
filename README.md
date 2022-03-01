@@ -48,17 +48,17 @@ Fora definidos alguns requisitos para execução do projeto:
 E, o projeto deve cumprir as seguintes regras do negócio:
 1. Um usuário poderá criar uma conta,
 autenticar-se, atualizar suas informações
-e até deletar seu próprio perfil
+e até deletar seu próprio perfil -> está sendo atendida (possível checar na pasta users de rota)
 2. O usuário poderá ter mais de um pedido
 e apenas o dono do pedido poderá ter
 acesso a ele.
 3. Apenas um administrador poderá
 cadastrar produtos e assim definir quanto
-deste produto está disponível no estoque.
+deste produto está disponível no estoque. -> apenas um admin autenticado consegue criar novos produtos
 4. Cada produto precisa ter pelo menos um
-tamanho
+tamanho -> cumprido
 5. Um e-commerce precisa gerenciar um
-estoque dos produtos
+estoque dos produtos -> acrescentei a possibilidade
 6. Um pedido poderá ser realizado apenas por
 usuários autenticados.
 
