@@ -1,3 +1,4 @@
+import { OrdersModule } from '@app/orders/orders.module';
 import { IsAdminGuard } from '@auth/guards/is-admin.guard';
 import { ConfigValidationSchema } from '@config/env/config.schema';
 import { Module } from '@nestjs/common';
@@ -8,12 +9,13 @@ import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
+    ProductsModule,
     ConfigModule.forRoot({
       envFilePath: `.env.stage.${process.env.STAGE}`,
       validationSchema: ConfigValidationSchema,
       isGlobal: true,
-    }), 
-    ProductsModule,
+    }),
+
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -29,6 +31,8 @@ import { AuthModule } from './auth/auth.module';
       inject: [ConfigService],
     }),
     AuthModule,
+    ProductsModule,
+    OrdersModule,
   ],
 })
 export class AppModule {}
